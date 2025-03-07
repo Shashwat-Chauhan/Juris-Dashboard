@@ -3,6 +3,7 @@
   import { db } from '../config/firebase.js'
   import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
   import PropTypes from 'prop-types';
+  import alt_image from '../assets/alt_image.png'
 
   const TeamSection = ({ designation = "null", title = "null", collectionName = "null" }) => {
     const [team, setTeam] = useState([]);
@@ -85,7 +86,7 @@
                 {team.map((member) => (
                   <div key={member.id} className="bg-white p-4 shadow-md rounded-lg flex flex-col items-center">
                     <img 
-                      src={member.image || "https://via.placeholder.com/100"} 
+                      src={member.image || alt_image} 
                       alt={member.name} 
                       className="w-24 h-24 rounded-full border-2 border-gray-300 object-cover"
                     />
