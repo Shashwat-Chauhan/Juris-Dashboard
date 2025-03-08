@@ -13,6 +13,7 @@ import EventsTab from "../components/tabs/EventsTab";
 import LegalNewsTab from "../components/tabs/LegalNewsTab";
 import OpportunitiesTab from "../components/tabs/OpportunitiesTab";
 import CareerTab from "../components/tabs/CareerTab";
+import ManageBlogs from "../components/tabs/ManageBlogs";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -50,13 +51,22 @@ export default function Dashboard() {
               <ChevronDown className="w-4 h-4 ml-auto transform transition-transform" style={{ transform: isPublicationsOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </button>
             {isPublicationsOpen && (
-              <div className="ml-8 mt-1 space-y-2">
-                <button onClick={() => handleNavigation("/dashboard/publications/blogs")} className="block w-full px-4 py-2 text-gray-700 hover:bg-green-200 rounded">
-                  Blogs
-                </button>
-                <button onClick={() => handleNavigation("/dashboard/publications/journals")} className="block w-full px-4 py-2 text-gray-700 hover:bg-green-200 rounded">
-                  Journals
-                </button>
+              <div className="ml-8 mt-1">
+                <div className="items-start hover:bg-green-200" onClick={() => handleNavigation("/dashboard/publications/addblog")} >
+                  <button onClick={() => handleNavigation("/dashboard/publications/addblog")} className="  content-start px-4 py-2 text-gray-700 hover:bg-green-200 rounded">
+                    Add Blog
+                  </button>
+                </div>
+                <div className="hover:bg-green-200 " onClick={() => handleNavigation("/dashboard/publications/blogs")}>
+                  <button onClick={() => handleNavigation("/dashboard/publications/blogs")} className="  px-4 py-2 text-gray-700 hover:bg-green-200 rounded">
+                    Manage BLogs
+                  </button>
+                </div>
+                <div className="hover:bg-green-200 " onClick={() => handleNavigation("/dashboard/publications/journals")} >
+                  <button onClick={() => handleNavigation("/dashboard/publications/journals")} className=" px-4 py-2 text-gray-700 hover:bg-green-200 rounded">
+                    Journals
+                  </button>
+                </div>
               </div>
             )}
           </div>
@@ -92,7 +102,8 @@ export default function Dashboard() {
       <div className="flex-1 overflow-auto p-8">
         <Routes>
           <Route path="team" element={<TeamTab />} />
-          <Route path="publications/blogs" element={<BlogsTab />} />
+          <Route path="publications/addblog" element={<BlogsTab />} />
+          <Route path="publications/blogs" element={<ManageBlogs/>} />
           <Route path="publications/journals" element={<JournalsTab />} />
           <Route path="events" element={<EventsTab />} />
           <Route path="legal-news" element={<LegalNewsTab />} />
